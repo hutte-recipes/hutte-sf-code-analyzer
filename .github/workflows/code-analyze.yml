@@ -20,7 +20,7 @@ jobs:
         uses: forcedotcom/run-code-analyzer@v1
         with:
           run-command: run
-          run-arguments: --engine pmd --target force-app --pmdconfig=pmd/ruleset.xml --format table --severity-threshold 3
+          run-arguments: --engine pmd --target force-app --pmdconfig=pmd/ruleset.xml --format table --severity-threshold 3 --normalize-severity
 
   RetireJS:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
         uses: forcedotcom/run-code-analyzer@v1
         with:
           run-command: run
-          run-arguments: --engine "retire-js" --target force-app --format table --severity-threshold 3
+          run-arguments: --engine "retire-js" --target force-app --format table --severity-threshold 3 --normalize-severity
 
   GraphEngine:
     runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
         uses: forcedotcom/run-code-analyzer@v1
         with:
           run-command: run dfa
-          run-arguments: --target force-app --projectdir force-app --format table --severity-threshold 3
+          run-arguments: --target force-app --projectdir force-app --format table --severity-threshold 3 --normalize-severity
 
   ESLint:
     runs-on: ubuntu-latest
@@ -62,4 +62,4 @@ jobs:
         uses: forcedotcom/run-code-analyzer@v1
         with:
           run-command: run
-          run-arguments: --engine eslint --eslintconfig=.eslintrc.json --target "force-app/**/*.js" --format table --severity-threshold 3
+          run-arguments: --engine eslint --eslintconfig=.eslintrc.json --target "force-app/**/*.js" --format table --severity-threshold 3 --normalize-severity
