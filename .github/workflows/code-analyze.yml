@@ -19,9 +19,8 @@ jobs:
       - name: SF Code Analyzer - PMD
         uses: forcedotcom/run-code-analyzer@v1
         with:
-          results-artifact-name: code-analyzer-pmd-results
           run-command: run
-          run-arguments: --engine pmd --target force-app --pmdconfig=pmd/ruleset.xml --format table --severity-threshold 3 --normalize-severity
+          run-arguments: --engine pmd --target force-app --pmdconfig=pmd/ruleset.xml --format table --severity-threshold 3 --normalize-severity --outfile SalesforceCodeAnalyzerResults.json
 
   RetireJS:
     runs-on: ubuntu-latest
@@ -34,9 +33,8 @@ jobs:
       - name: SF Code Analyzer - RetireJS
         uses: forcedotcom/run-code-analyzer@v1
         with:
-          results-artifact-name: code-analyzer-retirejs-results
           run-command: run
-          run-arguments: --engine "retire-js" --target force-app --format table --severity-threshold 3 --normalize-severity
+          run-arguments: --engine "retire-js" --target force-app --format table --severity-threshold 3 --normalize-severity --outfile SalesforceCodeAnalyzerResults.json
 
   GraphEngine:
     runs-on: ubuntu-latest
@@ -49,9 +47,8 @@ jobs:
       - name: SF Code Analyzer - Data Flow Analysis
         uses: forcedotcom/run-code-analyzer@v1
         with:
-          results-artifact-name: code-analyzer-dfa-results
           run-command: run dfa
-          run-arguments: --target force-app --projectdir force-app --format table --severity-threshold 3 --normalize-severity
+          run-arguments: --target force-app --projectdir force-app --format table --severity-threshold 3 --normalize-severity --outfile SalesforceCodeAnalyzerResults.json
 
   ESLint:
     runs-on: ubuntu-latest
@@ -64,6 +61,5 @@ jobs:
       - name: SF Code Analyzer - ESLint
         uses: forcedotcom/run-code-analyzer@v1
         with:
-          results-artifact-name: code-analyzer-eslint-results
           run-command: run
-          run-arguments: --engine eslint --eslintconfig=.eslintrc.json --target "force-app/**/*.js" --format table --severity-threshold 3 --normalize-severity
+          run-arguments: --engine eslint --eslintconfig=.eslintrc.json --target "force-app/**/*.js" --format table --severity-threshold 3 --normalize-severity --outfile SalesforceCodeAnalyzerResults.json
